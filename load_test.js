@@ -14,8 +14,6 @@ dns.lookup = function forcedLookup (domain, callback) {
 };
 // end ugly hack
 
-//http.globalAgent.maxSockets = 1000;
-
 if(process.argv.length <= 2) {
     process.stdout.write("host must be specified\n");
     process.exit();
