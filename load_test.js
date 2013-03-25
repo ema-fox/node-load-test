@@ -24,6 +24,7 @@ var HOST = process.argv[2];
 var SESSION_PER_SECOND = 40;
 var REQS_PER_SESSION = 100;
 var DURATION = 60;
+var CONNECTIONS_PER_SESSION = 6;
 
 if(process.argv.length > 3) {
     if(process.argv.length < 6) {
@@ -63,7 +64,7 @@ function stage(agent, reqs, callback) {
 }
 
 function session(shouldStart) {
-    var agent = new http.Agent({'maxSockets': 1});
+    var agent = new http.Agent({'maxSockets': CONNECTIONS_PER_SESSION});
     var start = now();
     //process.stderr.write("" + (start - shouldStart) + '\n');
     stage(agent, REQS_PER_SESSION, function () {
